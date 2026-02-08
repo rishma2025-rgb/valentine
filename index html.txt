@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Baeb 💖</title>
+
+<style>
+body {
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+  font-family: Comic Sans MS, cursive;
+  overflow:hidden;
+  text-align:center;
+}
+
+h1 {
+  color:white;
+  font-size:40px;
+}
+
+button {
+  padding:12px 25px;
+  font-size:18px;
+  margin:10px;
+  border:none;
+  border-radius:25px;
+  cursor:pointer;
+}
+
+#yes { background:#ff4d6d; color:white; }
+#no { background:#333; color:white; position:relative; }
+
+.heart {
+  position:absolute;
+  color:red;
+  font-size:22px;
+  animation: fall 4s linear infinite;
+}
+
+@keyframes fall {
+  0% { transform: translateY(-10vh); opacity:1; }
+  100% { transform: translateY(110vh); opacity:0; }
+}
+
+#celebrate {
+  display:none;
+  font-size:28px;
+  color:white;
+}
+</style>
+</head>
+
+<body>
+
+<div id="main">
+  <h1>Will you be my Valentine, Baeb? 💖🥺</h1>
+  <button id="yes" onclick="yesClicked()">YES 😍</button>
+  <button id="no" onclick="noClicked()">NO 🙈</button>
+</div>
+
+<div id="celebrate">
+  🎉 YAYYY BAEB SAID YESSSS 💖😍🥳  
+  <br><br>
+  You made my heart soooo happy 💕💞💓  
+</div>
+
+<!-- Justin Bieber Baby song (YouTube embed) -->
+<iframe id="song" width="0" height="0"
+src="https://www.youtube.com/embed/kffacxfA7G4?autoplay=1&loop=1&playlist=kffacxfA7G4">
+</iframe>
+
+<script>
+let noCount = 0;
+
+function noClicked(){
+  noCount++;
+
+  if(noCount==1){
+    document.querySelector("h1").innerText="Please, be my Valentine 🥺💖";
+  }
+  else if(noCount==2){
+    document.querySelector("h1").innerText="Abba please 😭💘";
+  }
+  else{
+    moveNo();
+  }
+}
+
+function moveNo(){
+  let btn = document.getElementById("no");
+  btn.style.position="absolute";
+  btn.style.left=Math.random()*80+"vw";
+  btn.style.top=Math.random()*80+"vh";
+}
+
+function yesClicked(){
+  document.getElementById("main").style.display="none";
+  document.getElementById("celebrate").style.display="block";
+  heartRain();
+}
+
+function heartRain(){
+  for(let i=0;i<80;i++){
+    let heart=document.createElement("div");
+    heart.innerHTML="💖";
+    heart.classList.add("heart");
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(Math.random()*20+18)+"px";
+    heart.style.animationDuration=(Math.random()*2+3)+"s";
+    document.body.appendChild(heart);
+  }
+}
+</script>
+
+</body>
+</html>
